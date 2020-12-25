@@ -9,10 +9,10 @@ import { AccountService } from '../services/account.service';
 export class StocksComponent {
   @Input() stocks: any;
 
-  constructor(private accountService: AccountService) {}
+  constructor(private accountService: AccountService) { }
 
   buy(stock): void {
-
+    this.accountService.purchase(stock);
   }
 
 }

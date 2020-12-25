@@ -11,24 +11,30 @@ import { StocksComponent } from './stocks/stocks.component';
 import { AlertComponent } from './alert/alert.component';
 
 import { LocalStorageService } from './services/local-storage.service';
+import { AccountService } from './services/account.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-        InvestmentsComponent,
-        TickerComponent,
-        StocksComponent,
-        AlertComponent,
-      ],
-      imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        ClarityModule,
+    InvestmentsComponent,
+    TickerComponent,
+    StocksComponent,
+    AlertComponent,
   ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    ClarityModule,
+  ],
+
+  //local onde os serviços devem ser registrados
+  //nas versões mais novas do Angular esse passo não é mais necessários
+  //basta decorar com @injectable({providerIn: 'root'}) 
   providers: [
-        LocalStorageService,
-        CurrencyPipe
-       ],
+    LocalStorageService,
+    CurrencyPipe,
+    AccountService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
