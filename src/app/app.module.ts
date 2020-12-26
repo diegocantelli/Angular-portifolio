@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
 import { ClarityModule } from 'clarity-angular';
 import { CurrencyPipe } from '@angular/common';
 
@@ -25,6 +26,7 @@ import { AccountService } from './services/account.service';
     BrowserModule,
     BrowserAnimationsModule,
     ClarityModule,
+    HttpClientModule
   ],
 
   //local onde os serviços devem ser registrados
