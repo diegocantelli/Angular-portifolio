@@ -10,6 +10,7 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { TickerComponent } from './ticker/ticker.component';
 import { StocksComponent } from './stocks/stocks.component';
 import { AlertComponent } from './alert/alert.component';
+import { AlertService } from './services/alert.service';
 
 import { LocalStorageService } from './services/local-storage.service';
 import { AccountService } from './services/account.service';
@@ -36,6 +37,7 @@ import { StocksInterceptor } from './services/interceptor.service';
   providers: [
     LocalStorageService,
     CurrencyPipe,
+    AlertService,
     AccountService,
     {
       provide: HTTP_INTERCEPTORS,
