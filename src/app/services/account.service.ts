@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
 import { Stock } from './stocks.model';
 import { LocalStorageService } from './local-storage.service';
 import { AlertService } from './alert.service';
@@ -12,9 +13,12 @@ export class AccountService {
     private _value: number = 0;
     private _stocks: Stock[] = [];
 
+    //é possível usar alguns pipes como um serviço dentro da aplicação
+
     constructor(
         private localStorageService: LocalStorageService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private currencyPipe: CurrencyPipe
     ) { }
 
     get balance(): number { return this._balance; }
@@ -32,11 +36,11 @@ export class AccountService {
             this._stocks.push(stock);
             this.calculateValue();
             this.cacheValues();
-            this.alertService.alert(`You bought ${stock.symbol} for $${stock.
-                price}`, 'success');
+            this.alertService.alert(`You bought ${stock.symbol} for ` + this.
+                currencyPipe.transform(stock.price, 'USD', true, '.2'), 'success');
         } else {
-            this.alertService.alert(`You have insufficient funds to buy ${stock.
-                symbol}`, 'danger');
+            this.alertService.alert(`You sold ${stock.symbol} for ` + this.currencyPipe.
+                transform(stock.price, 'USD', true, '.2'), 'success');
         }
     }
 
